@@ -1,0 +1,56 @@
+name: Balance
+description: 'Current balance socket'
+endpoints:
+  balance:
+    POST:
+      description: 'Manage your balance'
+      file: scripts/Balance.js
+        parameters:
+          account_id: 
+            type: string
+            description: Your account's ID.
+        response:
+          mimetype: application/json
+          examples:
+            - exit_code: 200
+              description: "Success"
+              example:
+                {
+                  "balance": 5000,
+                  "currency": "GBP",
+                  "spend_today": 0
+                }
+            - exit_code: 400
+              description: "Failure"
+              example: 
+                {
+                  "reason": "Internal error!"
+                }
+  recently-spent:
+    POST:
+      description: 'Difference in balance since the provided date'
+      file: scripts/balance.js
+        parameters:
+          account_id: 
+            type: string
+            description: Your account's ID.
+          date:
+            type: date
+            description: A date to be considered as a beggining to be calculated
+        response:
+          mimetype: application/json
+          examples:
+            - exit_code: 200
+              description: "Success"
+              example:
+                {
+                  "balance": 5000,
+                  "balanceThen": 8000,
+                  "difference": -3000
+                }
+            - exit_code: 400
+              description: "Failure"
+              example: 
+                {
+                  "reason": "Internal error!"
+                }

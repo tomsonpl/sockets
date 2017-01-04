@@ -1,0 +1,32 @@
+name: Accounts
+description: 'Current accounts socket'
+endpoints:
+  list:
+    POST:
+      description: 'Manage your existing accounts'
+      file: scripts/Accounts.js
+      parameters:
+        account_id: 
+          type: string
+          description: Your account ID
+      response:
+        mimetype: application/json
+        examples:
+          - exit_code: 200
+            description: "Success"
+            example:
+              {
+                "accounts": [
+                  {
+                    "id": "acc_00009237aqC8c5umZmrRdh",
+                    "description": "Peter Pan's Account",
+                    "created": "2015-11-13T12:17:42Z"
+                  }
+                ]
+              }
+          - exit_code: 400
+            description: "Failure"
+            example: 
+              {
+                "reason": "Internal error!"
+              }

@@ -1,0 +1,67 @@
+name: webhook
+description: register a webhook'
+endpoints:
+  register:
+    POST:
+      description: 'register your webhooks'
+      file: scripts/WebhookRegister.js
+        parameters:
+          account_id: 
+            type: string
+            description: The account to receive notifications for.
+          url: 
+            type: string
+            description: The URL we will send notifications to.
+        response:
+          mimetype: application/json
+          examples:
+            - exit_code: 200
+              description: "Success"
+              example:
+                {
+                  "webhook": {
+                    "account_id": "account_id",
+                    "id": "webhook_id",
+                    "url": "http://example.com"
+                  }
+                }
+            - exit_code: 400
+              description: "Failure"
+              example: 
+                {
+                  "reason": "Internal error!"
+                }
+  list:
+    POST:
+      description: 'Manage your webhooks'
+      file: scripts/WebhookList.js
+        parameters:
+          account_id: 
+            type: string
+            description: The account to receive notifications for.
+        response:
+          mimetype: application/json
+          examples:
+            - exit_code: 200
+              description: "Success"
+              example:
+               {
+                "webhooks": [
+                  {
+                    "account_id": "acc_000091yf79yMwNaZHhHGzp",
+                    "id": "webhook_000091yhhOmrXQaVZ1Irsv",
+                    "url": "http://example.com/callback"
+                  },
+                  {
+                    "account_id": "acc_000091yf79yMwNaZHhHGzp",
+                    "id": "webhook_000091yhhzvJSxLYGAceC9",
+                    "url": "http://example2.com/anothercallback"
+                  }
+                ]
+              } 
+            - exit_code: 400
+              description: "Failure"
+              example: 
+                {
+                  "reason": "Internal error!"
+                }
