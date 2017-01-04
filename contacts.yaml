@@ -1,0 +1,59 @@
+name: Contacts
+description: 'Trusted contacts'
+endpoints:
+  add:
+    POST:
+      description: 'Add a contact'
+      file: scripts/ContactsAdd.js
+        parameters:
+          account_id: 
+            type: string
+            description: Your account's ID.
+         contact_id: 
+            type: string
+            description: A user that receives money
+
+        response:
+          mimetype: application/json
+          examples:
+            - exit_code: 200
+              description: "Success"
+              example:
+                {
+                  "contact_id": Peter Pan's friend,
+                  "trusted": true
+                }
+            - exit_code: 400
+              description: "Failure"
+              example: 
+                {
+                  "reason": "Internal error!"
+                }
+  remove:
+    POST:
+      description: 'Remove a contact'
+      file: scripts/ContactsAdd.js
+        parameters:
+          account_id: 
+            type: string
+            description: Your account's ID.
+         contact_id: 
+            type: string
+            description: A user that receives money
+
+        response:
+          mimetype: application/json
+          examples:
+            - exit_code: 200
+              description: "Success"
+              example:
+                {
+                  "contact_id": Peter Pan's friend,
+                  "trusted": false
+                }
+            - exit_code: 400
+              description: "Failure"
+              example: 
+                {
+                  "reason": "Internal error!"
+                }

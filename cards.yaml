@@ -1,0 +1,86 @@
+name: Cards
+description: 'Manage current cards'
+endpoints:
+  request-a-card:
+    POST:
+      description: 'Request a new card'
+      file: scripts/CardsRequest.js
+        parameters:
+          account_id: 
+            type: string
+            description: Your account's ID.
+          card_type:
+            type: string
+            description: Type of the card - debit / credit.
+  response:
+    mimetype: application/json
+    examples:
+      - exit_code: 200
+        description: "Success"
+        example:
+          {
+            "card_id": 'user4534543cardno1',
+            "card_type": 'debit'
+          }
+      - exit_code: 400
+        description: "Failure"
+        example: 
+          {
+            "reason": "Internal error!"
+          }
+  activate-a-card:
+    POST:
+      description: 'Activate your card'
+      file: scripts/CardsActivate.js
+        parameters:
+          account_id: 
+            type: string
+            description: Your account's ID.
+          card_id:
+            type: string
+            description: Card's ID
+  response:
+    mimetype: application/json
+    examples:
+      - exit_code: 200
+        description: "Success"
+        example:
+          {
+            "card_id": 'user4534543cardno1',
+            "card_type": "debit",
+            "activated": true
+          }
+      - exit_code: 400
+        description: "Failure"
+        example: 
+          {
+            "reason": "Internal error!"
+          }
+  deactivate-a-card:
+    POST:
+      description: 'Deactivate your card'
+      file: scripts/CardsDeactivate.js
+        parameters:
+          account_id: 
+            type: string
+            description: Your account's ID.
+          card_id:
+            type: string
+            description: Card's ID
+  response:
+    mimetype: application/json
+    examples:
+      - exit_code: 200
+        description: "Success"
+        example:
+          {
+            "card_id": 'user4534543cardno1',
+            "card_type": "debit",
+            "activated": false
+          }
+      - exit_code: 400
+        description: "Failure"
+        example: 
+          {
+            "reason": "Internal error!"
+          }

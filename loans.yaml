@@ -1,0 +1,68 @@
+name: Loans
+description: 'Current Loans socket'
+endpoints:
+  get-a-loan:
+    POST:
+      description: 'Get a loan'
+      file: scripts/LoanGet.js
+        parameters:
+          account_id: 
+            type: string
+            description: Your account's ID.
+          ammount:
+            type: integer
+            description: Size of the loan
+          currency: 
+            type: string
+            description: Loan's currency
+        response:
+          mimetype: application/json
+          examples:
+            - exit_code: 200
+              description: "Success"
+              example:
+                {
+                  "loan_id": loanno1,
+                  "ammount": 5000,
+                  "currency": "GBP"
+                  "balance": 7500,
+                  "deadline": '08-05-2018'
+                }
+            - exit_code: 400
+              description: "Failure"
+              example: 
+                {
+                  "reason": "Internal error!"
+                }
+  pay-a-loan:
+    POST:
+      description: 'Pay a loan'
+      file: scripts/LoanPay.js
+        parameters:
+          account_id: 
+            type: string
+            description: Your account's ID.
+          ammount:
+            type: integer
+            description: Size of the loan
+          loan_id:
+            type: string
+            description: Loan's id.
+        response:
+          mimetype: application/json
+          examples:
+            - exit_code: 200
+              description: "Success"
+              example:
+                {
+                  "loan_id": loanno1,
+                  "ammount": 5000,
+                  "balance": 2500,
+                  "paid": true
+                }
+            - exit_code: 400
+              description: "Failure"
+              example: 
+                {
+                  "reason": "Internal error!"
+                }

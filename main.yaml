@@ -1,0 +1,55 @@
+IDEAS: IDEAS
+name: main
+description: 'FinTech sockets'
+endpoints:
+  transfers:
+    description: 'Transfering funds'
+    file: scripts/transfers.js
+    parameters:
+      userA:
+        type: string
+        id: 'gdfgfdfgd'
+        description: 'A user that sends money'
+        example: Tomek
+      userB: 
+        type: string
+        description: 'A user that receives money'
+        example: Daniel
+    response:
+    xxx
+  creditCards:
+    description: 'Manage your cards'
+    addNewCard:
+      description: 'Request a new card'
+    removeCard:
+      description: 'Request removing a card'
+  balance:
+    description: 'Manage your daily or monthly spending/income'
+    checkIncome:
+      description: 'Check income'
+    checkSpending: 
+      description: 'Check spending'
+  savings:
+    description: 'Set a monthly amount to save'
+    addNewAmmount:
+      description: 'Set new ammount to save monthly'
+    changeAmmount: 
+      description: 'Change present ammount'      
+  favouriteContacts:
+    description: 'Add trusted contacts, that do not require special confirmation before transfers'
+    addContact:
+      description: 'Add contact to the list'
+    removeContact:
+      description: 'Remove contact from the list'
+  loans:
+    description: 'Manage loans you have, or take a new one'
+    takeLoan: 
+      description: 'Take a new loan'
+    payLoan:
+      description: 'Pay the present loan'
+  finanseOrganizer:
+    description: 'Get help in organising your finances'
+    seeHelp:
+      description: 'See help '
+  phoneMoney:
+    description: 'send money on a previously confirmed phone number'
